@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Mail, Phone, MapPin, Instagram, Facebook, TikTok } from 'lucide-react'
+import { Mail, Phone, MapPin, Instagram, Facebook, Music } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -89,7 +89,7 @@ export default function Footer() {
                 className="p-3 bg-primary hover:bg-primary/90 text-foreground rounded-lg transition-colors"
                 aria-label="TikTok"
               >
-                <TikTok className="w-5 h-5" />
+                <Music className="w-5 h-5" />
               </a>
             </div>
             <p className="text-xs text-background/70">
