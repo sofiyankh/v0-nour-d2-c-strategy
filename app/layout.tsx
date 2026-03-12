@@ -39,8 +39,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ar" dir="rtl" className={`${cairo.variable} ${amiri.variable}`}>
-      <body className="font-cairo antialiased">
+    <html lang="ar" dir="rtl" style={{
+      '--cairo': cairo.style.fontFamily,
+      '--amiri': amiri.style.fontFamily,
+    } as React.CSSProperties}>
+      <body className="antialiased">
         <Providers>
           {children}
           <Analytics />

@@ -4,15 +4,32 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-sans: 'Cairo', system-ui, sans-serif;
+  --font-serif: 'Amiri', Georgia, serif;
+}
+
 @layer base {
-  :root {
-    --font-cairo: var(--cairo);
-    --font-amiri: var(--amiri);
+  /* Apply Cairo font to body text */
+  body {
+    font-family: var(--font-cairo);
   }
 
-  @theme {
-    --font-sans: var(--font-cairo), system-ui, sans-serif;
-    --font-serif: var(--font-amiri), Georgia, serif;
+  /* Apply Amiri (Quranic style) to headings */
+  h1, h2, h3 {
+    font-family: var(--font-amiri);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  h4, h5, h6 {
+    font-family: var(--font-cairo);
+    font-weight: 700;
+  }
+
+  /* Default sans-serif usage */
+  * {
+    --font-sans: var(--font-cairo);
   }
 }
 
@@ -22,6 +39,10 @@
   --nour-cream: #FAF7F2;
   --nour-olive: #4A5E3A;
   --nour-dark: #2B2B2B;
+
+  /* Font Families */
+  --font-cairo: 'Cairo', sans-serif;
+  --font-amiri: 'Amiri', serif;
   
   --background: #FAF7F2;
   --foreground: #2B2B2B;
