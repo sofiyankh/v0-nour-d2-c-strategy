@@ -2,14 +2,14 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { Star, Heart, ShoppingBag, ArrowLeft } from 'lucide-react'
+import Image from 'next/image'
+import { Star, Heart, ShoppingBag, Minus, Plus, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { getProductById, products } from '@/lib/products'
 import { useCart } from '@/lib/cart-context'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
+import PriceFormatter from '@/components/price-formatter'
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const product = getProductById(params.id)
@@ -81,11 +81,14 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
         <section className="py-12 px-4 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Image */}
-            <div className="flex items-center justify-center bg-muted rounded-lg overflow-hidden h-96">
-              <img
+            <div className="flex items-center justify-center bg-muted rounded-lg overflow-hidden h-96 relative">
+              <Image
                 src={product.image}
                 alt={product.name}
+                fill
                 className="w-full h-full object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
 
@@ -101,14 +104,38 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                   </div>
                   <button
                     onClick={() => setWishlist(!wishlist)}
-                    className="p-3 bg-muted rounded-lg hover:bg-border transition-colors"
+                    className="p-2 rounded-full hover:bg-muted transition-colors"
+                    aria-label="Add to wishlist"
                   >
                     <Heart
-                      className={`w-6 h-6 ${
-                        wishlist ? 'fill-primary text-primary' : 'text-muted-foreground'
+                      className={`w-6 h-6 transition-colors ${
+                        wishlist
+                          ? 'fill-destructive text-destructive'
+                          : 'text-muted-foreground'
                       }`}
                     />
                   </button>
+                </div>
+
+                {/* Rating */}
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="flex gap-1">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <span
+                        key={i}
+                        className={`text-lg ${
+                          i < Math.floor(product.rating)
+                            ? 'text-yellow-400'
+                            : 'text-muted-foreground'
+                        }`}
+                      >
+                        ★
+                      </span>
+                    ))}
+                  </div>
+                  <span className="text-sm text-muted-foreground">
+                    {product.rating} ({product.reviews} تقييم)
+                  </span>
                 </div>
 
                 {/* Rating */}
@@ -130,9 +157,34 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                 </div>
 
                 {/* Price */}
-                <div className="mb-6 pb-6 border-b border-border">
-                  <div className="text-4xl font-bold text-primary mb-2">${product.price}</div>
-                  <p className="text-green-600 font-medium">In Stock</p>
+                <div className="mb-6">
+                  <PriceFormatter 
+                    price={product.price}
+                    originalPrice={product.originalPrice}
+                    showDiscount={true}
+                  />
+                </div>
+
+                {/* Quantity */}
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="text-foreground font-semibold">الكمية:</span>
+                  <div className="flex items-center border border-border rounded-lg bg-card">
+                    <button
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      className="p-2 text-foreground hover:bg-muted transition-colors"
+                      aria-label="Decrease quantity"
+                    >
+                      <Minus className="w-4 h-4" />
+                    </button>
+                    <span className="w-12 text-center font-semibold text-foreground">{quantity}</span>
+                    <button
+                      onClick={() => setQuantity(quantity + 1)}
+                      className="p-2 text-foreground hover:bg-muted transition-colors"
+                      aria-label="Increase quantity"
+                    >
+                      <Plus className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
 
                 {/* Description */}
@@ -160,36 +212,25 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
 
               {/* Add to Cart Section */}
               <div className="space-y-4 border-t border-border pt-6">
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center border border-border rounded-lg">
-                    <button
-                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                      className="px-3 py-2 hover:bg-muted transition-colors"
-                    >
-                      −
-                    </button>
-                    <Input
-                      type="number"
-                      value={quantity}
-                      onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                      className="w-16 border-0 text-center"
-                      min="1"
-                    />
-                    <button
-                      onClick={() => setQuantity(quantity + 1)}
-                      className="px-3 py-2 hover:bg-muted transition-colors"
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-
                 <Button
                   onClick={handleAddToCart}
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-lg flex items-center justify-center gap-2"
+                  className={`w-full py-6 text-lg font-semibold transition-all flex items-center justify-center gap-2 ${
+                    addedToCart
+                      ? 'bg-secondary text-secondary-foreground'
+                      : 'bg-primary hover:bg-primary/90 text-primary-foreground'
+                  }`}
                 >
-                  <ShoppingBag className="w-5 h-5" />
-                  {addedToCart ? 'Added to Cart!' : 'Add to Cart'}
+                  {addedToCart ? (
+                    <>
+                      <Check className="w-5 h-5" />
+                      تم الإضافة للسلة
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingBag className="w-5 h-5" />
+                      أضف للسلة
+                    </>
+                  )}
                 </Button>
               </div>
             </div>

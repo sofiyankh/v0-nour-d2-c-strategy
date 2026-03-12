@@ -1,109 +1,86 @@
 'use client'
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { Star, Heart } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { getProductsByCategory } from '@/lib/products'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
+import ProductGrid from '@/components/product-grid'
+import { getProductsByCategory } from '@/lib/products'
 
-export default function SkincareePage() {
-  const products = getProductsByCategory('skincare')
-  const [wishlist, setWishlist] = useState<string[]>([])
+const skincareProducts = getProductsByCategory('skincare')
 
-  const toggleWishlist = (id: string) => {
-    setWishlist(prev =>
-      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
-    )
-  }
-
+export default function SkincarePage() {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <>
       <Header />
-      
-      <main className="flex-1">
+      <main className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative h-96 bg-gradient-to-r from-primary to-primary/70 text-white overflow-hidden">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -mr-48 -mt-48"></div>
-          </div>
-          <div className="relative h-full flex items-center justify-center text-center px-4">
-            <div className="max-w-2xl">
-              <h1 className="text-5xl font-bold mb-4">منتجات العناية بالبشرة</h1>
-              <p className="text-xl text-white/90">
-                Discover our premium skincare collection crafted for Mediterranean beauty
-              </p>
+        <section className="bg-gradient-to-br from-secondary/10 via-background to-primary/5 py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="space-y-6">
+                <h1 className="text-5xl md:text-6xl font-bold text-foreground text-balance">
+                  العناية بالبشرة الطبيعية
+                </h1>
+                <p className="text-xl text-muted-foreground">
+                  منتجات عناية بالبشرة مصنوعة من أفضل المكونات التونسية الطبيعية. مصممة خصيصاً لبشرة البحر المتوسط.
+                </p>
+                <div className="flex flex-col gap-4">
+                  <div className="space-y-2">
+                    <p className="font-semibold text-foreground">100% طبيعي</p>
+                    <p className="text-sm text-muted-foreground">مكونات طبيعية نقية بدون مواد كيميائية ضارة</p>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="font-semibold text-foreground">صُنع محلياً</p>
+                    <p className="text-sm text-muted-foreground">من قبل نساء تونسيات بخبرة وعناية</p>
+                  </div>
+                </div>
+              </div>
+              <div className="h-96 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl flex items-center justify-center border border-primary/10">
+                <div className="text-center">
+                  <div className="text-6xl mb-4">🌿</div>
+                  <p className="text-muted-foreground">منتجات العناية بالبشرة الفاخرة</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Products Grid */}
-        <section className="py-12 px-4 max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {products.map(product => (
-              <div key={product.id} className="bg-card rounded-lg overflow-hidden border border-border hover:shadow-lg transition-shadow">
-                <div className="relative h-64 bg-muted overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                  <button
-                    onClick={() => toggleWishlist(product.id)}
-                    className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-muted transition-colors"
-                  >
-                    <Heart
-                      className={`w-5 h-5 ${
-                        wishlist.includes(product.id)
-                          ? 'fill-primary text-primary'
-                          : 'text-muted-foreground'
-                      }`}
-                    />
-                  </button>
-                </div>
-                <div className="p-4">
-                  <h3 className="font-semibold text-foreground mb-1">{product.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-3">{product.nameAr}</p>
-                  
-                  <div className="flex items-center gap-1 mb-3">
-                    <div className="flex items-center">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`w-4 h-4 ${
-                            i < Math.floor(product.rating)
-                              ? 'fill-primary text-primary'
-                              : 'text-muted-foreground'
-                          }`}
-                        />
-                      ))}
-                    </div>
-                    <span className="text-sm text-muted-foreground ml-1">
-                      ({product.reviews})
-                    </span>
-                  </div>
+        {/* Products Section */}
+        <section className="py-12 md:py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-foreground mb-8">منتجاتنا</h2>
+            <ProductGrid products={skincareProducts} showFilters={false} />
+          </div>
+        </section>
 
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-primary">${product.price}</span>
-                    <Link href={`/product/${product.id}`}>
-                      <Button
-                        variant="default"
-                        size="sm"
-                        className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
-                      >
-                        عرض التفاصيل
-                      </Button>
-                    </Link>
-                  </div>
+        {/* Benefits Section */}
+        <section className="bg-secondary/5 py-12 md:py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-foreground mb-12 text-center">فوائد منتجاتنا</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: 'ترطيب عميق',
+                  description: 'صيغ غنية توفر ترطيباً عميقاً وطويل الأمد للبشرة',
+                },
+                {
+                  title: 'مضادات الأكسدة',
+                  description: 'مكونات غنية بمضادات الأكسدة تحمي البشرة من الضرر',
+                },
+                {
+                  title: 'مضادة للشيخوخة',
+                  description: 'تقلل من الخطوط الدقيقة والتجاعيد بشكل طبيعي',
+                },
+              ].map((benefit, index) => (
+                <div key={index} className="bg-card rounded-lg p-6 border border-border hover:border-primary/30 transition-all">
+                  <h3 className="text-xl font-semibold text-foreground mb-3">{benefit.title}</h3>
+                  <p className="text-muted-foreground">{benefit.description}</p>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
       </main>
-
       <Footer />
-    </div>
+    </>
   )
 }
