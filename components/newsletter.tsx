@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Mail } from 'lucide-react'
+import { Mail, Bell, Star, Clock } from 'lucide-react'
 
 export default function Newsletter() {
   const [email, setEmail] = useState('')
@@ -25,7 +25,7 @@ export default function Newsletter() {
           {/* Header */}
           <div className="space-y-4">
             <div className="inline-block px-4 py-2 bg-primary/10 rounded-full">
-              <p className="text-primary font-semibold text-sm">📬 ابقي على اطلاع</p>
+              <p className="text-primary font-semibold text-sm flex items-center gap-2"><Bell className="w-4 h-4" /> ابقي على اطلاع</p>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground">
               نسخة حصرية <br />
@@ -54,11 +54,11 @@ export default function Newsletter() {
                 type="submit"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground h-12 px-8 rounded-lg font-semibold"
               >
-                {submitted ? 'تم الاشتراك! ✓' : 'اشتركي الآن'}
+                اشتركي الآن
               </Button>
             </div>
             <p className="text-xs text-muted-foreground">
-              ✓ سهل إلغاء الاشتراك في أي وقت | لا نشارك بريدك مع أحد
+              سهل إلغاء الاشتراك في أي وقت | لا نشارك بريدك مع أحد
             </p>
           </form>
 
@@ -70,12 +70,16 @@ export default function Newsletter() {
             </div>
             <div className="hidden sm:block w-px h-8 bg-border"></div>
             <div className="text-center">
-              <p className="font-semibold text-foreground">⭐⭐⭐⭐⭐</p>
+              <div className="flex items-center justify-center gap-1 mb-2">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
               <p className="text-sm text-muted-foreground">تقييم مثالي</p>
             </div>
             <div className="hidden sm:block w-px h-8 bg-border"></div>
             <div className="text-center">
-              <p className="font-semibold text-foreground">24/7</p>
+              <Clock className="w-5 h-5 mx-auto mb-2 text-foreground" />
               <p className="text-sm text-muted-foreground">دعم العملاء</p>
             </div>
           </div>

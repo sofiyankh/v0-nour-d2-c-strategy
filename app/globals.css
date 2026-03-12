@@ -4,6 +4,18 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@layer base {
+  :root {
+    --font-cairo: var(--cairo);
+    --font-amiri: var(--amiri);
+  }
+
+  @theme {
+    --font-sans: var(--font-cairo), system-ui, sans-serif;
+    --font-serif: var(--font-amiri), Georgia, serif;
+  }
+}
+
 :root {
   /* NOUR Brand Colors */
   --nour-terracotta: #C4714A;

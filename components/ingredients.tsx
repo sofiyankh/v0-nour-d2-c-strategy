@@ -1,34 +1,35 @@
 'use client'
 
 import { Card } from '@/components/ui/card'
+import { Droplet, Leaf, Flower, Gem, Check } from 'lucide-react'
 
 const ingredients = [
   {
     name: 'زيت الصبار',
     arabic: 'Prickly Pear Oil',
     description: 'مليء بمضادات الأكسدة والفيتامينات، يحارب الشيخوخة ويعيد الإشراق',
-    icon: '🌵',
+    icon: Leaf,
     benefits: ['مكافحة الشيخوخة', 'ترطيب عميق', 'إصلاح البشرة'],
   },
   {
     name: 'الزيتون التونسي',
     arabic: 'Tunisian Olive Oil',
     description: 'سكوالان طبيعي من زيتون البحر المتوسط، ينعم ويحمي',
-    icon: '🫒',
+    icon: Droplet,
     benefits: ['حماية طبيعية', 'تنعيم الجلد', 'مرطب قوي'],
   },
   {
     name: 'ماء الورد',
     arabic: 'Rose Water',
     description: 'مقتطف من وردة دمشق التونسية، ينقي ويرطب في نفس الوقت',
-    icon: '🌹',
+    icon: Flower,
     benefits: ['تنقية لطيفة', 'توازن الرطوبة', 'رائحة طبيعية'],
   },
   {
     name: 'الغسول الطبيعي',
     arabic: 'Ghassoul Clay',
     description: 'طين تقليدي من الصحراء التونسية، تنظيف عميق دون تقسية',
-    icon: '💎',
+    icon: Gem,
     benefits: ['تنظيف عميق', 'إزالة السموم', 'لا تجفف الجلد'],
   },
 ]
@@ -39,7 +40,7 @@ export default function Ingredients() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 space-y-4">
-          <p className="text-primary font-semibold text-lg">🌿 المكونات النجمية</p>
+          <p className="text-primary font-semibold text-lg flex items-center justify-center gap-2"><Leaf className="w-5 h-5" /> المكونات النجمية</p>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground">
             مكونات تونسية <br />
             <span className="text-primary">مُختارة بعناية</span>
@@ -58,7 +59,9 @@ export default function Ingredients() {
             >
               <div className="p-6 space-y-4">
                 {/* Icon */}
-                <div className="text-5xl">{ingredient.icon}</div>
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <ingredient.icon className="w-6 h-6 text-primary" />
+                </div>
 
                 {/* Name */}
                 <div>
@@ -73,7 +76,7 @@ export default function Ingredients() {
                 <div className="space-y-2 pt-4 border-t border-border">
                   {ingredient.benefits.map((benefit, bIdx) => (
                     <div key={bIdx} className="flex items-center gap-2 text-sm">
-                      <span className="text-primary font-bold">✓</span>
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
                       <span className="text-foreground">{benefit}</span>
                     </div>
                   ))}

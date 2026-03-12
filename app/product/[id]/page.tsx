@@ -1,20 +1,20 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, use } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Star, Heart, ShoppingBag, Minus, Plus, Check } from 'lucide-react'
+import { Heart, ShoppingBag, Minus, Plus, Check, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { getProductById, products } from '@/lib/products'
+import { getProductById } from '@/lib/products'
 import { useCart } from '@/lib/cart-context'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import PriceFormatter from '@/components/price-formatter'
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  const product = getProductById(params.id)
+export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
+  const product = getProductById(id)
   const { addToCart } = useCart()
-  const router = useRouter()
   const [quantity, setQuantity] = useState(1)
   const [wishlist, setWishlist] = useState(false)
   const [addedToCart, setAddedToCart] = useState(false)

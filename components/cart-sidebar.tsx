@@ -26,9 +26,9 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
         />
       )}
 
-      {/* Sidebar */}
+      {/* Full Screen Cart Slide Sheet */}
       <div
-        className={`fixed right-0 top-0 h-full w-96 bg-card border-l border-border shadow-lg transform transition-transform duration-300 z-50 flex flex-col ${
+        className={`fixed right-0 top-0 h-full w-full md:w-96 bg-card border-l border-border shadow-2xl transform transition-transform duration-300 z-50 flex flex-col ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >

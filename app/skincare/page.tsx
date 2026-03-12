@@ -4,6 +4,7 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import ProductGrid from '@/components/product-grid'
 import { getProductsByCategory } from '@/lib/products'
+import { Leaf } from 'lucide-react'
 
 const skincareProducts = getProductsByCategory('skincare')
 
@@ -36,7 +37,9 @@ export default function SkincarePage() {
               </div>
               <div className="h-96 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl flex items-center justify-center border border-primary/10">
                 <div className="text-center">
-                  <div className="text-6xl mb-4">🌿</div>
+                  <div className="w-20 h-20 rounded-lg bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                    <Leaf className="w-10 h-10 text-primary" />
+                  </div>
                   <p className="text-muted-foreground">منتجات العناية بالبشرة الفاخرة</p>
                 </div>
               </div>

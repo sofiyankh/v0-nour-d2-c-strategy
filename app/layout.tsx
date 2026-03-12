@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+import { Amiri, Cairo } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import Providers from '@/components/providers'
 import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const amiri = Amiri({ subsets: ["arabic"], weight: ["400", "700"] });
+const cairo = Cairo({ subsets: ["arabic"], weight: ["400", "500", "700"] });
 
 export const metadata: Metadata = {
   title: 'NOUR — Grown Here. Made for You.',
@@ -36,8 +39,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" dir="rtl">
-      <body className="font-sans antialiased">
+    <html lang="ar" dir="rtl" className={`${cairo.variable} ${amiri.variable}`}>
+      <body className="font-cairo antialiased">
         <Providers>
           {children}
           <Analytics />

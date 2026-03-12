@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Leaf, Microscope, Heart, Globe } from 'lucide-react'
 
 export default function Story() {
   return (
@@ -16,7 +16,9 @@ export default function Story() {
 
               {/* Center content */}
               <div className="relative flex flex-col items-center justify-center h-full text-center space-y-8 p-8">
-                <div className="text-6xl font-bold text-primary">🌿</div>
+                <div className="w-16 h-16 rounded-lg bg-primary/20 flex items-center justify-center">
+                  <Leaf className="w-10 h-10 text-primary" />
+                </div>
                 <p className="text-3xl font-bold text-foreground">
                   مكونات تونسية
                 </p>
@@ -41,7 +43,7 @@ export default function Story() {
           {/* Right Content */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <p className="text-primary font-semibold text-lg">💡 قصتنا</p>
+              <p className="text-primary font-semibold text-lg flex items-center gap-2"><Heart className="w-5 h-5" /> قصتنا</p>
               <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight text-balance">
                 نحن بنينا ما تمنيّا <span className="text-primary">أن نجده</span>
               </h2>
@@ -56,7 +58,7 @@ export default function Story() {
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/20">
-                    <span className="text-2xl">🌍</span>
+                    <Globe className="w-6 h-6 text-primary" />
                   </div>
                 </div>
                 <div>
@@ -70,7 +72,7 @@ export default function Story() {
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/20">
-                    <span className="text-2xl">🧬</span>
+                    <Microscope className="w-6 h-6 text-secondary" />
                   </div>
                 </div>
                 <div>
@@ -84,7 +86,7 @@ export default function Story() {
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-accent/20">
-                    <span className="text-2xl">💚</span>
+                    <Heart className="w-6 h-6 text-accent" />
                   </div>
                 </div>
                 <div>
