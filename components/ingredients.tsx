@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Card } from '@/components/ui/card'
 import { Droplet, Leaf, Flower, Gem, Check } from 'lucide-react'
 
@@ -86,8 +87,18 @@ export default function Ingredients() {
           ))}
         </div>
 
+        {/* Ingredients showcase image */}
+        <div className="mb-16 rounded-3xl overflow-hidden h-96">
+          <Image
+            src="/images/ingredients-illustration.jpg"
+            alt="Tunisia Ingredients - Olive Oil, Rose Water, Saffron, Clay"
+            fill
+            className="object-cover"
+          />
+        </div>
+
         {/* Trust section */}
-        <div className="bg-primary/10 border border-primary/20 rounded-2xl p-8 md:p-12">
+        <div className="bg-primary/10 border border-primary/20 rounded-2xl p-8 md:p-12 backdrop-blur-sm">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <p className="text-3xl md:text-4xl font-bold text-primary mb-2">100%</p>

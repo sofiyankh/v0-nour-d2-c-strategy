@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { useCart } from '@/lib/cart-context'
 import { useAuth } from '@/lib/auth-context'
 import CartSidebar from '@/components/cart-sidebar'
+import ThemeToggle from '@/components/theme-toggle'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -53,6 +54,9 @@ export default function Header() {
 
           {/* Right actions */}
           <div className="flex items-center gap-4">
+            {/* Theme Toggle */}
+            <ThemeToggle />
+
             {/* Cart Button */}
             <button
               onClick={() => setCartOpen(true)}

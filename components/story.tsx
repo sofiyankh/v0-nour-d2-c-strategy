@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Leaf, Microscope, Heart, Globe } from 'lucide-react'
 
@@ -10,33 +11,17 @@ export default function Story() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Visual */}
           <div className="relative hidden md:flex">
-            <div className="relative w-full aspect-square">
-              {/* Decorative background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl"></div>
-
-              {/* Center content */}
-              <div className="relative flex flex-col items-center justify-center h-full text-center space-y-8 p-8">
-                <div className="w-16 h-16 rounded-lg bg-primary/20 flex items-center justify-center">
-                  <Leaf className="w-10 h-10 text-primary" />
-                </div>
-                <p className="text-3xl font-bold text-foreground">
-                  مكونات تونسية
-                </p>
-                <p className="text-lg text-muted-foreground">
-                  زراعة محلية. جودة عالمية. نتائج شخصية.
-                </p>
-                <div className="flex gap-3 justify-center">
-                  <div className="px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-semibold">
-                    الصبار
-                  </div>
-                  <div className="px-4 py-2 bg-secondary/20 text-secondary rounded-full text-sm font-semibold">
-                    الزيتون
-                  </div>
-                  <div className="px-4 py-2 bg-accent/20 text-accent rounded-full text-sm font-semibold">
-                    الورد
-                  </div>
-                </div>
-              </div>
+            <div className="relative w-full aspect-square rounded-3xl overflow-hidden">
+              {/* Glass overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent backdrop-blur-sm z-10" />
+              
+              {/* Image */}
+              <Image
+                src="/images/story-illustration.jpg"
+                alt="Tunisian Women Creating NOUR"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
 

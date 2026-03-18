@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 
@@ -25,16 +27,20 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 h-auto rounded-lg shadow-lg hover:shadow-xl transition-all">
-                اكتشفي المنتجات
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-              <Button
-                variant="outline"
-                className="border-2 border-primary text-primary hover:bg-primary/10 text-lg px-8 py-6 h-auto rounded-lg"
-              >
-                اقرأي قصتنا
-              </Button>
+              <Link href="/shop">
+                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 h-auto rounded-lg shadow-lg hover:shadow-xl transition-all">
+                  اكتشفي المنتجات
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+              <Link href="/about">
+                <Button
+                  variant="outline"
+                  className="border-2 border-primary text-primary hover:bg-primary/10 text-lg px-8 py-6 h-auto rounded-lg"
+                >
+                  اقرأي قصتنا
+                </Button>
+              </Link>
             </div>
 
             {/* Trust badges */}
@@ -60,20 +66,25 @@ export default function Hero() {
 
           {/* Right Visual */}
           <div className="relative hidden md:flex items-center justify-center">
-            <div className="relative w-full aspect-square">
-              {/* Background shapes */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-transparent rounded-3xl"></div>
-              <div className="absolute -top-8 -right-8 w-32 h-32 bg-primary/30 rounded-full blur-3xl"></div>
-              <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-secondary/20 rounded-full blur-3xl"></div>
-
-              {/* Center content */}
-              <div className="relative flex items-center justify-center h-full">
-                <div className="text-center space-y-6">
-                  <div className="text-6xl font-bold text-primary">نور</div>
-                  <p className="text-xl text-secondary font-semibold">Grown here. Made for you.</p>
-                  <div className="inline-block px-6 py-3 bg-white rounded-full text-primary font-semibold shadow-lg">
-                    جودة مكفولة
-                  </div>
+            <div className="relative w-full aspect-square rounded-3xl overflow-hidden">
+              {/* Glass effect background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/10 backdrop-blur-md z-10" />
+              
+              {/* Hero image */}
+              <Image
+                src="/images/hero-illustration.jpg"
+                alt="NOUR Beauty - Mediterranean Beauty"
+                fill
+                className="object-cover"
+                priority
+              />
+              
+              {/* Overlay text */}
+              <div className="absolute inset-0 flex items-end justify-center p-8 z-20">
+                <div className="text-center space-y-4">
+                  <p className="text-white font-semibold text-lg drop-shadow-lg">
+                    Grown here. Made for you.
+                  </p>
                 </div>
               </div>
             </div>

@@ -39,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ar" dir="rtl" style={{
+    <html lang="ar" dir="rtl" data-scroll-behavior="smooth" style={{
       '--cairo': cairo.style.fontFamily,
       '--amiri': amiri.style.fontFamily,
     } as React.CSSProperties}>
