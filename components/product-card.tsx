@@ -32,7 +32,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Link href={`/product/${product.id}`}>
-      <div className="group h-full flex flex-col bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-300 cursor-pointer">
+      <div className="group h-full flex flex-col glass dark:glass-dark rounded-xl overflow-hidden hover:shadow-xl hover:border-primary/50 transition-all duration-300 cursor-pointer">
         {/* Image Container */}
         <div className="relative w-full h-64 bg-muted overflow-hidden">
           <Image
@@ -58,7 +58,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               e.preventDefault()
               setIsWishlisted(!isWishlisted)
             }}
-            className="absolute bottom-3 right-3 p-2 bg-white/80 hover:bg-white rounded-full transition-colors shadow-sm"
+            className="absolute bottom-3 right-3 p-2 glass backdrop-blur-lg rounded-full transition-colors shadow-lg hover:shadow-xl"
           >
             <Heart
               className={`w-5 h-5 transition-colors ${

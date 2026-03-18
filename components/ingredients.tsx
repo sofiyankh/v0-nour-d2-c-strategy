@@ -88,7 +88,7 @@ export default function Ingredients() {
         </div>
 
         {/* Ingredients showcase image */}
-        <div className="mb-16 rounded-3xl overflow-hidden h-96">
+        <div className="relative mb-16 rounded-3xl overflow-hidden h-96">
           <Image
             src="/images/ingredients-illustration.jpg"
             alt="Tunisia Ingredients - Olive Oil, Rose Water, Saffron, Clay"

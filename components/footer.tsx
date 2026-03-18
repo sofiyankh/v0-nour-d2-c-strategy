@@ -5,17 +5,17 @@ import { Mail, Phone, MapPin, Instagram, Facebook, Music } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-foreground text-background py-16 md:py-20">
+    <footer className="bg-gradient-to-b from-background to-muted/30 text-foreground py-16 md:py-20 border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="grid md:grid-cols-4 gap-8 mb-12 pb-12 border-b border-background/20">
+        <div className="grid md:grid-cols-4 gap-8 mb-12 pb-12 border-b border-border/20">
           {/* Brand */}
           <div className="space-y-4">
             <div>
               <h3 className="text-3xl font-bold text-primary">نور</h3>
-              <p className="text-sm text-background/70">NOUR</p>
+              <p className="text-sm text-muted-foreground">NOUR</p>
             </div>
-            <p className="text-sm text-background/80 leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               مستحضرات جمال طبيعية 100% مصنوعة من المكونات التونسية لبشرتك المتوسطية.
             </p>
           </div>
@@ -25,22 +25,22 @@ export default function Footer() {
             <h4 className="font-bold text-lg">روابط سريعة</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="#products" className="text-background/80 hover:text-primary transition-colors">
+                <Link href="/shop" className="text-muted-foreground hover:text-primary transition-colors">
                   المنتجات
                 </Link>
               </li>
               <li>
-                <Link href="#story" className="text-background/80 hover:text-primary transition-colors">
+                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
                   قصتنا
                 </Link>
               </li>
               <li>
-                <Link href="#ingredients" className="text-background/80 hover:text-primary transition-colors">
+                <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
                   المكونات
                 </Link>
               </li>
               <li>
-                <Link href="/" className="text-background/80 hover:text-primary transition-colors">
+                <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
                   الأسئلة الشائعة
                 </Link>
               </li>
@@ -51,15 +51,15 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="font-bold text-lg">خدمة العملاء</h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2 text-background/80">
+              <li className="flex items-center gap-2 text-muted-foreground">
                 <Phone className="w-4 h-4 text-primary" />
                 <span>+216 XX XXX XXX</span>
               </li>
-              <li className="flex items-center gap-2 text-background/80">
+              <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="w-4 h-4 text-primary" />
                 <span>hello@nour.tn</span>
               </li>
-              <li className="flex items-start gap-2 text-background/80">
+              <li className="flex items-start gap-2 text-muted-foreground">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-1" />
                 <span>تونس</span>
               </li>

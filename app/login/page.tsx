@@ -37,7 +37,7 @@ export default function LoginPage() {
       <Header />
       <main className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-md">
-          <div className="bg-card rounded-lg shadow-lg p-8 border border-border">
+          <div className="glass dark:glass-dark rounded-2xl shadow-2xl p-8 backdrop-blur-xl">
             <h1 className="text-3xl font-bold text-center text-foreground mb-2">
               تسجيل الدخول
             </h1>
@@ -85,7 +85,7 @@ export default function LoginPage() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                className="w-full bg-gradient-to-r from-primary to-secondary hover:shadow-lg text-primary-foreground font-semibold rounded-xl transition-all"
               >
                 {loading ? 'جاري تسجيل الدخول...' : 'تسجيل الدخول'}
               </Button>

@@ -14,7 +14,7 @@ export default function Hero() {
           <div className="space-y-8">
             <div className="space-y-4">
               <p className="text-primary font-semibold text-lg">
-                ✨ نور جلدك
+                إضاءة بشرتك الطبيعية
               </p>
               <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight text-balance">
                 نهضة جمالك <br />
@@ -28,15 +28,14 @@ export default function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link href="/shop">
-                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 h-auto rounded-lg shadow-lg hover:shadow-xl transition-all">
+                <Button className="bg-gradient-to-r from-primary to-secondary hover:shadow-xl text-primary-foreground text-lg px-8 py-6 h-auto rounded-xl shadow-lg transition-all">
                   اكتشفي المنتجات
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
               <Link href="/about">
                 <Button
-                  variant="outline"
-                  className="border-2 border-primary text-primary hover:bg-primary/10 text-lg px-8 py-6 h-auto rounded-lg"
+                  className="glass dark:glass-dark border-primary/50 text-foreground hover:shadow-lg text-lg px-8 py-6 h-auto rounded-xl transition-all backdrop-blur-md"
                 >
                   اقرأي قصتنا
                 </Button>
@@ -72,8 +71,8 @@ export default function Hero() {
               
               {/* Hero image */}
               <Image
-                src="/images/hero-illustration.jpg"
-                alt="NOUR Beauty - Mediterranean Beauty"
+                src="/images/hero-main.jpg"
+                alt="NOUR Beauty - Premium Mediterranean Cosmetics"
                 fill
                 className="object-cover"
                 priority

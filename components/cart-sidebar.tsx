@@ -28,7 +28,7 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
 
       {/* Full Screen Cart Slide Sheet */}
       <div
-        className={`fixed right-0 top-0 h-full w-full md:w-96 bg-card border-l border-border shadow-2xl transform transition-transform duration-300 z-50 flex flex-col ${
+        className={`fixed right-0 top-0 h-full w-full md:w-96 glass dark:glass-dark border-l border-border shadow-2xl transform transition-transform duration-300 z-50 flex flex-col backdrop-blur-xl ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -52,7 +52,7 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
             </div>
           ) : (
             items.map(item => (
-              <div key={item.id} className="flex gap-3 bg-muted rounded-lg p-3 hover:bg-muted/80 transition-colors">
+              <div key={item.id} className="flex gap-3 glass dark:glass-dark rounded-lg p-3 hover:shadow-md transition-all">
                 <div className="relative w-16 h-16 flex-shrink-0 rounded-md overflow-hidden bg-background">
                   <Image
                     src={item.image}
