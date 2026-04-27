@@ -51,77 +51,23 @@ export default function SetupDemoPage() {
     setError(null)
 
     try {
-      const setupResults = []
+      console.log('[v0] Starting demo user setup...')
+      const response = await fetch('/api/setup-users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
 
-      for (const user of DEMO_USERS) {
-        try {
-          console.log('[v0] Setting up user:', user.email)
+      const data = await response.json()
 
-          // First, delete if exists
-          try {
-            await supabase.auth.admin.deleteUser(user.email)
-          } catch (e) {
-            // Ignore if user doesn't exist
-          }
-
-          // Create user with Supabase admin API
-          const { data, error: signUpError } = await supabase.auth.admin.createUser({
-            email: user.email,
-            password: user.password,
-            email_confirm: true,
-            user_metadata: {
-              name: user.name,
-              is_admin: user.isAdmin,
-            },
-          })
-
-          if (signUpError) {
-            console.error('[v0] Signup error:', signUpError)
-            setupResults.push({
-              email: user.email,
-              success: false,
-              message: `Error: ${signUpError.message}`,
-            })
-            continue
-          }
-
-          // Create profile
-          if (data?.user) {
-            const { error: profileError } = await supabase.from('profiles').upsert({
-              id: data.user.id,
-              email: user.email,
-              full_name: user.name,
-              is_admin: user.isAdmin,
-              created_at: new Date().toISOString(),
-            })
-
-            if (profileError) {
-              console.error('[v0] Profile error:', profileError)
-              setupResults.push({
-                email: user.email,
-                success: false,
-                message: `User created but profile failed: ${profileError.message}`,
-              })
-            } else {
-              console.log('[v0] User setup success:', user.email)
-              setupResults.push({
-                email: user.email,
-                success: true,
-                message: `Successfully created`,
-              })
-            }
-          }
-        } catch (err: any) {
-          console.error('[v0] Setup error for', user.email, err)
-          setupResults.push({
-            email: user.email,
-            success: false,
-            message: `Error: ${err?.message || 'Unknown error'}`,
-          })
-        }
+      if (data.success) {
+        console.log('[v0] Setup successful:', data.results)
+        setResults(data.results)
+      } else {
+        console.error('[v0] Setup failed:', data.message)
+        setError(data.message)
       }
-
-      setResults(setupResults)
     } catch (err: any) {
       setError(err?.message || 'Failed to setup demo users')
       console.error('[v0] Setup failed:', err)
@@ -160,6 +106,23 @@ export default function SetupDemoPage() {
               <div className="flex gap-3">
                 <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0" />
                 <p className="text-red-700 dark:text-red-200">{error}</p>
+              </div>
+            </div>
+          )}
+
+          {results.length === 0 && !error && (
+            <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 mb-6">
+              <div className="flex gap-3">
+                <AlertCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                <div className="text-sm text-blue-700 dark:text-blue-200">
+                  <p className="font-semibold mb-2">Demo Users Created:</p>
+                  <ul className="space-y-1 text-xs">
+                    <li>👤 admin@nour.tn / Admin@123456 (Admin)</li>
+                    <li>👤 support@nour.tn / Support@123456 (Admin)</li>
+                    <li>👤 customer@example.com / Customer@123456 (Customer)</li>
+                    <li>👤 demo@nour.tn / Demo@123456 (Customer)</li>
+                  </ul>
+                </div>
               </div>
             </div>
           )}
