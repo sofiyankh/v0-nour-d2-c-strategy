@@ -33,14 +33,14 @@ export async function proxy(request: NextRequest) {
       return NextResponse.redirect(new URL('/admin/login', request.url))
     }
 
-    // Check if user is admin
-    const { data: adminUser } = await supabase
-      .from('admin_users')
-      .select('id')
-      .eq('user_id', user.id)
+    // Check if user is admin using profiles table
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('is_admin')
+      .eq('id', user.id)
       .single()
 
-    if (!adminUser) {
+    if (!profile?.is_admin) {
       return NextResponse.redirect(new URL('/', request.url))
     }
   }
