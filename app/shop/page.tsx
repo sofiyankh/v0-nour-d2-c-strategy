@@ -1,10 +1,7 @@
-'use client'
-
 import { Metadata } from 'next'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
-import ProductGrid from '@/components/product-grid'
-import { products } from '@/lib/products'
+import ShopClient from './ShopClient'
 
 export const metadata: Metadata = {
   title: 'Shop - NOUR',
