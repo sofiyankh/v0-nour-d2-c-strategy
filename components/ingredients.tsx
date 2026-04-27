@@ -87,10 +87,10 @@ export default function Ingredients() {
           ))}
         </div>
 
-        {/* Ingredients showcase image */}
+        {/* Ingredients showcase image - NO BLUR */}
         <div className="relative mb-16 rounded-3xl overflow-hidden h-96">
           <Image
-            src="/images/ingredients-illustration.jpg"
+            src="/images/ingredients-new.jpg"
             alt="Tunisia Ingredients - Olive Oil, Rose Water, Saffron, Clay"
             fill
             className="object-cover"

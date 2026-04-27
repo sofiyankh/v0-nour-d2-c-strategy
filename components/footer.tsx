@@ -44,6 +44,11 @@ export default function Footer() {
                   الأسئلة الشائعة
                 </Link>
               </li>
+              <li>
+                <Link href="/demo-credentials" className="text-muted-foreground hover:text-primary transition-colors font-semibold">
+                  حسابات تجريبية
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -12,12 +12,9 @@ export default function Story() {
           {/* Left Visual */}
           <div className="relative hidden md:flex">
             <div className="relative w-full aspect-square rounded-3xl overflow-hidden">
-              {/* Glass overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent backdrop-blur-sm z-10" />
-              
-              {/* Image */}
+              {/* Image - NO BLUR */}
               <Image
-                src="/images/story-illustration.jpg"
+                src="/images/story-new.jpg"
                 alt="Tunisian Women Creating NOUR"
                 fill
                 className="object-cover"

@@ -66,12 +66,9 @@ export default function Hero() {
           {/* Right Visual */}
           <div className="relative hidden md:flex items-center justify-center">
             <div className="relative w-full aspect-square rounded-3xl overflow-hidden">
-              {/* Glass effect background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/10 backdrop-blur-md z-10" />
-              
-              {/* Hero image */}
+              {/* Hero image - NO BLUR */}
               <Image
-                src="/images/hero-main.jpg"
+                src="/images/hero-new.jpg"
                 alt="NOUR Beauty - Premium Mediterranean Cosmetics"
                 fill
                 className="object-cover"
