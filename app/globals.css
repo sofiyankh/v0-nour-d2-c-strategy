@@ -10,25 +10,36 @@
 }
 
 @layer base {
-  /* Glassmorphism effect */
-  .glass {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+  /* Body background with gradient - visible through glass effect */
+  body {
+    font-family: var(--font-cairo);
+    background: linear-gradient(135deg, #FAF7F2 0%, #E8DFD5 50%, #FAF7F2 100%);
+    min-height: 100vh;
   }
 
+  body.dark {
+    background: linear-gradient(135deg, #1A1A1A 0%, #2B2B2B 50%, #1A1A1A 100%);
+  }
+
+  /* Glassmorphism effect - light mode */
+  .glass {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Glassmorphism effect - dark mode */
   .glass-dark {
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(30, 30, 30, 0.25);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
 
   /* Apply Cairo font to body text */
-  body {
-    font-family: var(--font-cairo);
-  }
 
   /* Apply Amiri (Quranic style) to headings */
   h1, h2, h3 {
