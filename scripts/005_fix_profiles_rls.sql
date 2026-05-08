@@ -20,10 +20,9 @@ CREATE POLICY "Admins can view all profiles" ON public.profiles
     auth.uid() IN (SELECT id FROM public.profiles WHERE is_admin = true)
   );
 
--- Allow service role (admin API) to do everything (this policy uses a role-based check)
--- Service role operates outside RLS, so this is really just for clarity
+-- Allow service role (admin API) to do everything
+-- Service role operates outside RLS, but we add this policy for safety
 CREATE POLICY "Service role can manage all profiles" ON public.profiles
   FOR ALL
   USING (true)
-  WITH CHECK (true)
-  AS PERMISSIVE;
+  WITH CHECK (true);
