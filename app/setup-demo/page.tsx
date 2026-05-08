@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { AlertCircle, CheckCircle, Loader } from 'lucide-react'
@@ -80,11 +81,18 @@ export default function SetupDemoPage() {
     <div className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 p-8">
       <div className="max-w-2xl mx-auto">
         <div className="glass dark:glass-dark rounded-2xl p-8 backdrop-blur-xl">
-          <h1 className="text-3xl font-bold mb-6 text-foreground">Setup Demo Users</h1>
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h1 className="text-3xl font-bold text-foreground">Setup Demo Users</h1>
+              <p className="text-muted-foreground">Create test accounts for NOUR</p>
+            </div>
+          </div>
 
-          <p className="text-muted-foreground mb-6">
-            This will create 4 demo user accounts (2 admin, 2 customer) with proper Supabase authentication.
-          </p>
+          <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 mb-6">
+            <p className="text-amber-700 dark:text-amber-200 text-sm">
+              ⚡ This creates 4 demo accounts with full Supabase authentication. After setup, use these credentials to login.
+            </p>
+          </div>
 
           <Button
             onClick={setupDemoUsers}
@@ -152,10 +160,21 @@ export default function SetupDemoPage() {
           )}
 
           {results.length > 0 && results.every((r) => r.success) && (
-            <div className="mt-8 p-4 bg-green-500/20 border border-green-500/50 rounded-lg">
-              <p className="text-green-700 dark:text-green-200 font-semibold">
-                ✓ All demo users created successfully! You can now login with the credentials.
-              </p>
+            <div className="mt-8 space-y-4">
+              <div className="p-4 bg-green-500/20 border border-green-500/50 rounded-lg">
+                <p className="text-green-700 dark:text-green-200 font-semibold mb-4">
+                  ✓ All demo users created successfully!
+                </p>
+                <div className="space-y-2 text-sm">
+                  <p className="font-mono text-xs">📧 customer@example.com / Customer@123456</p>
+                  <p className="font-mono text-xs">📧 admin@nour.tn / Admin@123456</p>
+                </div>
+              </div>
+              <Link href="/login">
+                <Button className="w-full bg-gradient-to-r from-primary to-secondary text-primary-foreground">
+                  Go to Login →
+                </Button>
+              </Link>
             </div>
           )}
         </div>

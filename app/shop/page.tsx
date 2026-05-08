@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
-import ShopClient from './ShopClient'
+import ProductGrid from '@/components/product-grid'
+import { products } from '@/lib/products'
 
 export const metadata: Metadata = {
   title: 'Shop - NOUR',

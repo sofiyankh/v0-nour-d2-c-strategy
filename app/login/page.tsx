@@ -98,13 +98,26 @@ export default function LoginPage() {
               </Link>
             </p>
 
-            <div className="mt-6 p-4 bg-muted rounded-lg text-sm text-muted-foreground">
-              <p className="font-medium mb-2">Demo Credentials (للاختبار):</p>
-              <p className="font-mono text-xs mb-1">Email: customer@example.com</p>
-              <p className="font-mono text-xs mb-3">Password: Customer@123456</p>
-              <p className="border-t pt-2 mt-2">أو Admin:</p>
-              <p className="font-mono text-xs mb-1">Email: admin@nour.tn</p>
-              <p className="font-mono text-xs">Password: Admin@123456</p>
+            <div className="mt-6 space-y-4">
+              <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                <p className="font-medium text-blue-700 dark:text-blue-200 mb-3">
+                  🔧 First time? Create demo accounts:
+                </p>
+                <Link href="/setup-demo">
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                    Setup Demo Users
+                  </Button>
+                </Link>
+              </div>
+
+              <div className="p-4 bg-muted rounded-lg text-sm text-muted-foreground">
+                <p className="font-medium mb-2">Demo Credentials (للاختبار):</p>
+                <p className="font-mono text-xs mb-1">👤 customer@example.com</p>
+                <p className="font-mono text-xs mb-3">🔑 Customer@123456</p>
+                <p className="border-t pt-2 mt-2 mb-2">أو Admin:</p>
+                <p className="font-mono text-xs mb-1">👤 admin@nour.tn</p>
+                <p className="font-mono text-xs">🔑 Admin@123456</p>
+              </div>
             </div>
           </div>
         </div>
