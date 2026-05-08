@@ -35,6 +35,20 @@ export async function POST(request: Request) {
 
     for (const user of DEMO_USERS) {
       try {
+        console.log('[v0] Processing user:', user.email)
+
+        // First try to delete existing user if they exist
+        try {
+          const { data: listData } = await supabase.auth.admin.listUsers()
+          const existingUser = listData?.users?.find((u) => u.email === user.email)
+          if (existingUser) {
+            console.log('[v0] Deleting existing user:', user.email)
+            await supabase.auth.admin.deleteUser(existingUser.id)
+          }
+        } catch (deleteErr) {
+          console.log('[v0] Could not delete existing user (may not exist):', user.email)
+        }
+
         console.log('[v0] Creating auth user:', user.email)
 
         // Create user with admin API
@@ -60,6 +74,9 @@ export async function POST(request: Request) {
 
         // Create profile
         if (data.user) {
+          // First delete existing profile if it exists
+          await supabase.from('profiles').delete().eq('id', data.user.id)
+
           const { error: profileError } = await supabase
             .from('profiles')
             .insert({
