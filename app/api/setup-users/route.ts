@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
 
 const DEMO_USERS = [
@@ -30,7 +30,7 @@ const DEMO_USERS = [
 
 export async function POST(request: Request) {
   try {
-    const supabase = await createClient()
+    const supabase = createAdminClient()
     const results = []
 
     for (const user of DEMO_USERS) {
