@@ -16,25 +16,25 @@ interface DemoUser {
 const DEMO_USERS: DemoUser[] = [
   {
     email: 'admin@nour.tn',
-    password: 'Admin@123456',
+    password: 'password123',
     name: 'Admin NOUR',
     isAdmin: true,
   },
   {
     email: 'support@nour.tn',
-    password: 'Support@123456',
+    password: 'password123',
     name: 'Support Team',
     isAdmin: true,
   },
   {
     email: 'customer@example.com',
-    password: 'Customer@123456',
+    password: 'password123',
     name: 'Sarah Ahmed',
     isAdmin: false,
   },
   {
     email: 'demo@nour.tn',
-    password: 'Demo@123456',
+    password: 'password123',
     name: 'Leila Ben Ahmed',
     isAdmin: false,
   },
