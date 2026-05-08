@@ -58,11 +58,11 @@ export async function POST(request: Request) {
           continue
         }
 
-        // Update or create profile
+        // Create profile
         if (data.user) {
           const { error: profileError } = await supabase
             .from('profiles')
-            .upsert({
+            .insert({
               id: data.user.id,
               email: user.email,
               full_name: user.name,
@@ -70,7 +70,6 @@ export async function POST(request: Request) {
               phone: user.email === 'admin@nour.tn' ? '+216 20 000 000' : '+216 XX XXX XXX',
               address: user.email === 'admin@nour.tn' ? 'Tunis Center' : 'Tunisia',
               city: user.email === 'admin@nour.tn' ? 'Tunis' : 'Tunis',
-              created_at: new Date().toISOString(),
             })
 
           if (profileError) {
