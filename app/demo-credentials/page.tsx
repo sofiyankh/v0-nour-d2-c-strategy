@@ -17,13 +17,13 @@ export default function DemoCredentialsPage() {
         {
           name: 'Admin NOUR',
           email: 'admin@nour.tn',
-          password: 'Admin@123456',
+          password: 'password123',
           description: 'Full admin access to dashboard'
         },
         {
           name: 'Support Team',
           email: 'support@nour.tn',
-          password: 'Support@123456',
+          password: 'password123',
           description: 'Support admin access'
         }
       ]
@@ -35,13 +35,13 @@ export default function DemoCredentialsPage() {
         {
           name: 'Sarah Ahmed',
           email: 'customer@example.com',
-          password: 'Customer@123456',
+          password: 'password123',
           description: 'Regular customer account'
         },
         {
           name: 'Leila Ben Ahmed',
           email: 'demo@nour.tn',
-          password: 'Demo@123456',
+          password: 'password123',
           description: 'Demo customer account'
         }
       ]

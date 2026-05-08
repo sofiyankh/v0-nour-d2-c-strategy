@@ -113,10 +113,10 @@ export default function LoginPage() {
               <div className="p-4 bg-muted rounded-lg text-sm text-muted-foreground">
                 <p className="font-medium mb-2">Demo Credentials (للاختبار):</p>
                 <p className="font-mono text-xs mb-1">👤 customer@example.com</p>
-                <p className="font-mono text-xs mb-3">🔑 Customer@123456</p>
+                <p className="font-mono text-xs mb-3">🔑 password123</p>
                 <p className="border-t pt-2 mt-2 mb-2">أو Admin:</p>
                 <p className="font-mono text-xs mb-1">👤 admin@nour.tn</p>
-                <p className="font-mono text-xs">🔑 Admin@123456</p>
+                <p className="font-mono text-xs">🔑 password123</p>
               </div>
             </div>
           </div>
